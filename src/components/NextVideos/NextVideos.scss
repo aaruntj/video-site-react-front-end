@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+
+.nextvideos{
+  // background-color: orange;
+  padding: 1rem;
+  &__title{
+    color: $silver;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+  } 
+}

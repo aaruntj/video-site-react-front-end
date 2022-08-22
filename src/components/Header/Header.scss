@@ -1,0 +1,93 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+
+.header{
+// background-color: red;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1rem;
+@include tablet{
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 2.25rem 0rem;
+}
+@include desktop{
+  padding:auto;
+}
+  &__logo{
+    max-height: 1.563rem;
+    max-width: 7.5;
+  }
+  &__input{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include tablet{
+      width: auto;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+  }
+  &__search{
+    order: 0;
+    width: calc(100% - 3.25rem);
+    border-radius: 4px;
+    border: 1px solid $mercury;
+    @include tablet{
+      min-width: 15rem;
+    }
+    &:invalid{
+      border: 1px solid #d22d2d;
+    }
+    &:focus{
+      border: 1px solid $brainflix-blue;
+    }
+  }
+  &__avatar{
+    order: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    height: 2.25rem;
+    width: 2.25rem;
+    background-color: $mercury;
+    margin-left: 1rem;
+    @include tablet{
+      order: 2;
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  }
+  &__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    height: 2.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    color: $white;
+    background-color: $brainflix-blue;
+    position: relative;
+    @include tablet{
+      order: 1;
+      min-width: 9.375rem;
+      margin-left: 1rem;
+    }
+    &:hover{
+      background-color: $brainflix-darkblue;
+    }
+    &-icon{
+      position:absolute;
+      left: 0.5rem;
+    }
+    &-text{
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+      font-weight: 700;
+    }
+  }
+}

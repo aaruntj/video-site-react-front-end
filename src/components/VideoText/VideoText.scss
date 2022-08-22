@@ -1,0 +1,106 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+
+.videotext{
+  // background-color: pink;
+  padding: 1rem;
+  &__title{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $mercury;
+    @include tablet{
+      font-size: 2.063rem;
+      line-height: 2.75rem;
+      border-bottom: none;
+    }
+  }
+  &__details-container{
+    display: flex;
+    border-bottom: 1px solid $mercury;
+    @include tablet{
+      justify-content: space-between;
+    }
+  }
+  &__author-date{
+    width: 50%;
+    @include tablet{
+      display: flex;
+      width: auto;
+    }
+  }
+  &__author{
+    font-size: 0.813rem;
+    line-height: 1.125rem;
+    font-weight: 700;
+    @include tablet{
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+    @include tablet{
+      padding-right: 2rem;
+    }
+  }
+  &__date{
+    color: $silver;
+    font-size: 0.813rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    @include tablet{
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
+  &__views-likes{
+    width: 50%;
+    @include tablet{
+      display: flex;
+      width: auto;
+    }
+  }
+  &__views{
+    display: flex;
+    @include tablet{
+      padding-right: 2rem;
+    }
+    &-icon{
+      
+    }
+    &-text{
+      color: $silver;
+      font-size: 0.813rem;
+      line-height: 1.125rem;
+      font-weight: 400;
+      @include tablet{
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+      }
+    }
+  }
+  &__likes{
+    display: flex;
+    &-icon{
+
+    }
+    &-text{
+      color: $silver;
+      font-size: 0.813rem;
+      line-height: 1.125rem;
+      font-weight: 400;
+      @include tablet{
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+      }
+    }
+  }
+  &__description{
+    font-size: 0.813rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    @include tablet{
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
+}

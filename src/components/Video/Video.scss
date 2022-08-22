@@ -1,0 +1,16 @@
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+.video{
+  // background-color: yellow;
+  &__container{
+    background-color: $brainflix-darkblack;
+    height: 40vw;
+    text-align: center;
+  }
+  &__video{
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

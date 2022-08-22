@@ -1,0 +1,36 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+
+.nextvideo{
+  &__container{
+    display: flex;
+    padding-bottom: 1rem;
+  }
+  &__image{
+    height: 3rem;
+    width: 5rem;
+    border-radius: 4px;
+  }
+  &__heading-author{
+
+  }
+  &__heading{
+    font-size: 0.813rem;
+    line-height: 1.125rem;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    @include tablet{
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
+  &__author{
+    font-size: 0.813rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    @include tablet{
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
+}
