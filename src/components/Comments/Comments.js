@@ -2,11 +2,11 @@ import "./Comments.scss"
 import commentIcon from "../../assets/icons/add_comment.svg"
 import Comment from "../Comment/Comment"
 
-function Comments() {
+function Comments({comments}) {
   return (
     <section className="comments">
       
-      <p className="comments__number">"numberofcomments" Comments</p>
+      <p className="comments__number">{comments.length} Comments</p>
       <section className="comments__add-container">
         <img className="comments__add-avatar" src={require("../../assets/images/Mohan-muruge.jpg")} alt="Avatar"/>
         <section className="comments__heading-input-button">
@@ -20,8 +20,15 @@ function Comments() {
           </button>
         </section>
       </section>
-
-      <Comment />
+      {comments.map(meh =>
+        <Comment 
+        key={meh.timestamp}
+        name={meh.name}
+        comment={meh.comment}
+        timestamp={meh.timestamp}
+        />
+      )}
+      
       
     </section>
   )
