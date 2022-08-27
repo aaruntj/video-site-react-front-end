@@ -2,7 +2,7 @@ import "./Comments.scss"
 import commentIcon from "../../assets/icons/add_comment.svg"
 import Comment from "../Comment/Comment"
 
-function Comments({comments}) {
+function Comments({comments,formatDate}) {
   return (
     <section className="comments">
       
@@ -25,11 +25,9 @@ function Comments({comments}) {
         key={meh.timestamp}
         name={meh.name}
         comment={meh.comment}
-        timestamp={meh.timestamp}
+        timestamp={formatDate(meh.timestamp)}
         />
-      )}
-      
-      
+      )}      
     </section>
   )
 }

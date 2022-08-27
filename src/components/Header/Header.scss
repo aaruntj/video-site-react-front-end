@@ -10,15 +10,19 @@ padding: 1rem;
 @include tablet{
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 1rem 2.25rem 0rem;
 }
 @include desktop{
   padding:auto;
 }
+  // &__logo-container{
+  //   height: 100%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
   &__logo{
     max-height: 1.563rem;
-    max-width: 7.5;
+    // max-width: 7.5;
   }
   &__input{
     width: 100%;
@@ -29,7 +33,7 @@ padding: 1rem;
       width: auto;
       flex-direction: row;
       flex-wrap: nowrap;
-      padding-bottom: 1rem;
+      // padding-bottom: 1rem;
     }
   }
   &__search{

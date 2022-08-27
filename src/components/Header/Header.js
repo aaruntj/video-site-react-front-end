@@ -7,7 +7,9 @@ function Header() {
   return (
     <>
       <header className="header">
-        <img className="header__logo" src={headerLogo} alt="Brainflix Logo"/>
+        <section className="header__logo-container">
+          <img className="header__logo" src={headerLogo} alt="Brainflix Logo"/>
+        </section>
         <section className="header__input">
           <input type="text" className="header__search" id="" name="" placeholder="Search"/>
           <img className="header__avatar" src={require("../../assets/images/Mohan-muruge.jpg")} alt="Avatar"/>

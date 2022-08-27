@@ -1,5 +1,5 @@
 import "./Comment.scss"
-import {formatDate} from "../../App"
+
 
 function Comment({name,comment,timestamp,}) {
   return (
@@ -8,7 +8,7 @@ function Comment({name,comment,timestamp,}) {
       <section className="comment__text-container">
         <section className="comment__name-date">
           <p className="comment__name">{name}</p>
-          <p className="comment__date">{formatDate(timestamp)}</p>
+          <p className="comment__date">{timestamp}</p>
         </section>
         <p className="comment__comment-text">{comment}</p>
       </section>

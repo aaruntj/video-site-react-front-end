@@ -1,7 +1,6 @@
 import "./VideoText.scss"
 import viewsIcon from "../../assets/icons/views.svg"
 import likesIcon from "../../assets/icons/likes.svg"
-import {formatDate} from "../../App"
 
 function VideoText({videoTitle,videoChannel,videoTimestamp,videoViews,videoLikes,videoDescription}) {
   return (
@@ -10,7 +9,7 @@ function VideoText({videoTitle,videoChannel,videoTimestamp,videoViews,videoLikes
       <section className="videotext__details-container">
         <section className="videotext__author-date">
           <p className="videotext__author">By {videoChannel}</p>
-          <p className="videotext__date">{formatDate(videoTimestamp)}</p>
+          <p className="videotext__date">{videoTimestamp}</p>
         </section>
         <section className="videotext__views-likes">
           <section className="videotext__views">

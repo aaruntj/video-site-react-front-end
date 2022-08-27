@@ -8,18 +8,20 @@ import videoDetails from "./data/video-details.json"
 import {useState} from "react"
 
 
-export function formatDate(timestamp){
-  return new Date(timestamp).toLocaleDateString()
-}
+
 
 
 function App() {
+
+  function formatDate(timestamp){
+    return new Date(timestamp).toLocaleDateString()
+  }
 
   const [currentVideo,setCurrentVideo] = useState(videoDetails[0])
   // console.log(currentVideo)
 
   function selectVideo(videoId){
-    const nextVideo = videoDetails.find(video => video.id === videoId)
+    const nextVideo = videoDetails.find(boi => boi.id === videoId)
     // console.log(nextVideo)
     setCurrentVideo(nextVideo)
   }
@@ -33,7 +35,7 @@ function App() {
         <section className="videotext-comments-section">    
           <VideoText
           videoTitle={currentVideo.title}
-          videoTimestamp={currentVideo.timestamp}
+          videoTimestamp={formatDate(currentVideo.timestamp)}
           videoChannel={currentVideo.channel}
           videoViews={currentVideo.views}
           videoLikes={currentVideo.likes}
@@ -41,6 +43,7 @@ function App() {
           />
           <Comments 
           comments={currentVideo.comments}
+          formatDate={formatDate}
           />
         </section>
         <section className="nextvideos-section">
