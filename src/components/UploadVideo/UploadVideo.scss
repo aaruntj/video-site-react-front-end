@@ -1,2 +1,101 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/colours" as *;
+
+.upload{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @include tablet{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  &__title{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    @include tablet{
+      font-size: 2.063rem;
+      line-height: 2.75rem;
+    }
+  }
+  &__container{
+
+  }
+  &__image{
+
+    &-heading{
+      color: $silver;
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+      font-weight: 700;
+    }
+    &-image{
+      border-radius: 4px;
+      max-width: 100%;
+      @include tablet {
+        max-width: 50%;
+      }
+    }
+  }
+  &__form{
+
+    &-text{
+
+      &-heading{
+        color: $silver;
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+        font-weight: 700;
+      }
+    }
+  }
+  &__buttons{
+
+  }
+  &__publish-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    color: $white;
+    background-color: $brainflix-blue;
+    position: relative;
+    @include tablet{
+      min-width: 9.375rem;
+    }
+    &:hover{
+      background-color: $brainflix-darkblue;
+    }
+    &-icon{
+      position:absolute;
+      left: 0.5rem;
+    }
+    &-text{
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+      font-weight: 700;
+    }
+  }
+  &__cancel-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    color: $brainflix-blue;
+    background-color: $white;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    @include tablet{
+      min-width: 9.375rem;
+    }
+    &:hover{
+      background-color: $mercury;
+    }
+  }
+}
