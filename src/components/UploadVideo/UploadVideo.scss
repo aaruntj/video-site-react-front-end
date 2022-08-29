@@ -8,7 +8,12 @@
     padding-left: 2rem;
     padding-right: 2rem;
   }
+  @include desktop{
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
   &__title{
+    padding-bottom: 1rem;
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 700;
@@ -18,10 +23,16 @@
     }
   }
   &__container{
-
+    @include desktop{
+      display: flex;
+      border-bottom: 1px solid $mercury;
+    }
   }
   &__image{
-
+    @include desktop{
+      width: 30%;
+      margin-right: 1rem;
+    }
     &-heading{
       color: $silver;
       font-size: 0.75rem;
@@ -31,13 +42,18 @@
     &-image{
       border-radius: 4px;
       max-width: 100%;
-      @include tablet {
+      @include tablet{
         max-width: 50%;
+      }
+      @include desktop{
+        max-width: 100%;
       }
     }
   }
   &__form{
-
+    @include desktop{
+      width: 70%;
+    }
     &-text{
 
       &-heading{
@@ -46,10 +62,34 @@
         line-height: 1.25rem;
         font-weight: 700;
       }
+      &-input{
+        &-title{
+          margin-bottom: 1rem;
+          width: 100%;
+          height:2.25rem;
+          @include tablet{
+            height: 2.5rem;
+          }
+        }
+        &-description{
+          margin-bottom: 2rem;
+          width: 100%;
+          height: 4.5rem;
+          @include desktop{
+            height: 7rem;
+          }
+        }
+      }
     }
   }
   &__buttons{
-
+    @include tablet{
+      display:flex;
+      flex-direction: row-reverse;
+    }
+    @include desktop{
+      padding-top: 1rem;
+    }
   }
   &__publish-button{
     display: flex;
@@ -62,8 +102,9 @@
     color: $white;
     background-color: $brainflix-blue;
     position: relative;
+    margin-bottom: 1rem;
     @include tablet{
-      min-width: 9.375rem;
+      width: 9.375rem;
     }
     &:hover{
       background-color: $brainflix-darkblue;
@@ -92,7 +133,7 @@
     line-height: 1.25rem;
     font-weight: 700;
     @include tablet{
-      min-width: 9.375rem;
+      width: 9.375rem;
     }
     &:hover{
       background-color: $mercury;

@@ -1,6 +1,5 @@
 import "./Comment.scss"
 
-
 function Comment({name,comment,timestamp,}) {
   return (
     <section className="comment__comment-container">

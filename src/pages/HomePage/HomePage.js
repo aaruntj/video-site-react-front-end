@@ -27,7 +27,6 @@ function HomePage() {
     axios
       .get(videosUrl)
       .then(response =>{
-        // console.log(response.data)
         setVideos(response.data)
 
         if (!videoId) {
@@ -35,7 +34,6 @@ function HomePage() {
           axios
             .get(videoDetailsUrl(firstVideoId))
             .then(response =>{
-              // console.log(response.data)
               setVideo(response.data)
             })
         }
@@ -48,14 +46,11 @@ function HomePage() {
       axios
       .get(videoDetailsUrl(videoId))
       .then(response =>{
-        // console.log(response.data)
         setVideo(response.data)
       })
     }
-
   }, [videoId]);
  
-
   return (
     <>
       {video ?

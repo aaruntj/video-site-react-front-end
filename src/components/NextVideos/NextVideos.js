@@ -1,8 +1,6 @@
 import "./NextVideos.scss"
 import NextVideo from "../NextVideo/NextVideo"
-import {useEffect,useState} from "react"
-import axios from "axios"
-import { Link } from 'react-router-dom';
+import {Link} from "react-router-dom"
 
 function NextVideos({ videos }) {
   return (

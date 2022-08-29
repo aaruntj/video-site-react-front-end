@@ -20,6 +20,7 @@ function Comments({comments,formatDate}) {
           </button>
         </section>
       </section>
+      
       {comments.map(meh =>
         <Comment 
         key={meh.timestamp}
