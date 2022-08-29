@@ -5,10 +5,17 @@ import VideoText from "./components/VideoText/VideoText"
 import Comments from "./components/Comments/Comments"
 import NextVideos from "./components/NextVideos/NextVideos"
 import videoDetails from "./data/video-details.json"
+
+import HomePage from "./pages/HomePage/HomePage"
+import UploadVideoPage from "./pages/UploadVideoPage/UploadVideoPage"
+
 import {useState} from "react"
+import {BrowserRouter,Routes,Route,Navigate} from "react-router-dom"
+import ErrorPage from "./pages/ErrorPage/ErrorPage"
 
 
 
+// https://project-2-api.herokuapp.com/
 
 
 function App() {
@@ -29,27 +36,17 @@ function App() {
   
   return (
     <>
-      <Header />
-      <Video poster={currentVideo.image}/>
-      <section className="videotext-comments-nextvideos-section">
-        <section className="videotext-comments-section">    
-          <VideoText
-          videoTitle={currentVideo.title}
-          videoTimestamp={formatDate(currentVideo.timestamp)}
-          videoChannel={currentVideo.channel}
-          videoViews={currentVideo.views}
-          videoLikes={currentVideo.likes}
-          videoDescription={currentVideo.description}
-          />
-          <Comments 
-          comments={currentVideo.comments}
-          formatDate={formatDate}
-          />
-        </section>
-        <section className="nextvideos-section">
-          <NextVideos setCurrentVideo={selectVideo} />
-        </section>
-      </section>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home"/>} />
+          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/home/:videoId" element={<HomePage />} />
+          <Route path="/upload" element={<UploadVideoPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
