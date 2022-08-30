@@ -20,8 +20,9 @@ function Comments({comments,formatDate}) {
           </button>
         </section>
       </section>
-      
-      {comments.map(meh =>
+
+      {comments
+        .map(meh =>
         <Comment 
         key={meh.timestamp}
         name={meh.name}

@@ -35,19 +35,27 @@ function HomePage() {
             .get(videoDetailsUrl(firstVideoId))
             .then(response =>{
               setVideo(response.data)
-            })
+            })  
         }
       })
+      
   }, []);
 
   // Fetch individual video
   useEffect(() => {
+    console.log("triggered")
     if (videoId) {
       axios
       .get(videoDetailsUrl(videoId))
       .then(response =>{
         setVideo(response.data)
       })
+      .catch(error =>{
+        console.log("error")
+        // set setvideo to error state here !!!
+      })
+    } else {
+      // setVideo(videos && videos[0]) CHECK IF VIDEOS IS SET HERE
     }
   }, [videoId]);
  
@@ -72,7 +80,11 @@ function HomePage() {
             />
           </section>
           <section className="nextvideos-section">
-            <NextVideos videos={videos} />
+            <NextVideos
+            videos={videos}
+            videoId={videoId}
+            />
+
           </section>
         </section>
       </> : <p>Loading...</p>}
