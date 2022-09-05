@@ -6,6 +6,8 @@
 .videotext-comments-nextvideos-section{
   @include desktop{
     display: flex;
+    max-width: 75rem;
+    margin: 0 auto;
   }
 }
 

@@ -8,9 +8,62 @@
     background-color: $brainflix-darkblack;
     height: 40vw;
     text-align: center;
+    position: relative;
   }
   &__video{
     max-width: 100%;
     max-height: 100%;
+  }
+  &__controls{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+    right: 0;
+    margin: 0 auto;
+
+    @include tablet{
+      max-width: 60vw;
+    }
+  }
+
+  &__play-container,
+  &__timestamp-container,
+  &__options-container {
+    background: rgba(black, 0.5);
+    border-radius: 0.5rem;
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    margin-left: 15px;
+  }
+
+  &__play-container {
+    width: 3.5rem;
+  }
+
+  &__timestamp-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0 1rem;
+    color: white;
+    font-size: 0.8rem;
+  }
+
+  &__timestamp-bar {
+    height: 0.2rem;
+    width: 100%;
+    background: black;
+    margin-right: 1rem;
+  }
+
+  &__options-container {
+    justify-content: space-between;
+    width: 6rem;
   }
 }

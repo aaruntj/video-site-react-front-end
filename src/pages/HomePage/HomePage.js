@@ -6,21 +6,23 @@ import {useParams} from "react-router-dom"
 import {useEffect,useState} from "react"
 import axios from "axios"
 
-const apiKey="4b78566d-9793-4f16-ad40-2f00b7cc111c"
-const apiSuffix=`?api_key=${apiKey}`
-const apiUrl = 'https://project-2-api.herokuapp.com'
+const apiUrl = 'http://localhost:8080'
 
-const videosUrl = `${apiUrl}/videos${apiSuffix}`
-const videoDetailsUrl = (id) => `${apiUrl}/videos/${id}${apiSuffix}`
+const videosUrl = `${apiUrl}/videos`
+const videoDetailsUrl = (id) => `${apiUrl}/videos/${id}`
 
 function formatDate(timestamp){
   return new Date(timestamp).toLocaleDateString()
 }
 
 function HomePage() {
-  const {videoId} = useParams();
-  const [video,setVideo] = useState();
-  const [videos,setVideos] = useState();
+  const {videoId} = useParams()
+
+  const [video,setVideo] = useState()
+  const [videos,setVideos] = useState()
+
+  const [pageRefresh,setPageRefresh] = useState(false)
+  const [videoError,setvideoError] = useState(false)
 
   // Fetch list of videos
   useEffect(() => {
@@ -28,7 +30,6 @@ function HomePage() {
       .get(videosUrl)
       .then(response =>{
         setVideos(response.data)
-
         if (!videoId) {
           const firstVideoId = response.data[0].id
           axios
@@ -37,13 +38,11 @@ function HomePage() {
               setVideo(response.data)
             })  
         }
-      })
-      
-  }, []);
+      })   
+  }, [pageRefresh]);
 
   // Fetch individual video
   useEffect(() => {
-    console.log("triggered")
     if (videoId) {
       axios
       .get(videoDetailsUrl(videoId))
@@ -51,43 +50,48 @@ function HomePage() {
         setVideo(response.data)
       })
       .catch(error =>{
-        console.log("error")
-        // set setvideo to error state here !!!
+        setvideoError(true)
       })
     } else {
-      // setVideo(videos && videos[0]) CHECK IF VIDEOS IS SET HERE
+      setPageRefresh(!pageRefresh)
     }
   }, [videoId]);
  
   return (
     <>
-      {video ?
-      <>
-        <Video poster={video.image}/>
-        <section className="videotext-comments-nextvideos-section">
-          <section className="videotext-comments-section">    
-            <VideoText
-              videoTitle={video.title}
-              videoTimestamp={formatDate(video.timestamp)}
-              videoChannel={video.channel}
-              videoViews={video.views}
-              videoLikes={video.likes}
-              videoDescription={video.description}
-            />
-            <Comments 
-              comments={video.comments}
-              formatDate={formatDate}
-            />
-          </section>
-          <section className="nextvideos-section">
-            <NextVideos
-            videos={videos}
-            videoId={videoId}
-            />
-
-          </section>
-        </section>
-      </> : <p>Loading...</p>}
+      {video || videoError ?
+          <>
+            {videoError ? <p>Sorry, no video ID match</p> :
+              <>
+                <Video
+                  duration={video.duration}
+                  poster={video.image}
+                />
+                <section className="videotext-comments-nextvideos-section">
+                  <section className="videotext-comments-section">    
+                    <VideoText
+                      videoTitle={video.title}
+                      videoTimestamp={formatDate(video.timestamp)}
+                      videoChannel={video.channel}
+                      videoViews={video.views}
+                      videoLikes={video.likes}
+                      videoDescription={video.description}
+                    />
+                    <Comments 
+                      comments={video.comments}
+                      formatDate={formatDate}
+                    />
+                  </section>
+                  <section className="nextvideos-section">
+                    <NextVideos
+                    videos={videos}
+                    videoId={videoId}
+                    />
+                  </section>
+                </section>
+              </> }
+          </>
+      : <p>Loading...</p>}
     </>
   )
 }

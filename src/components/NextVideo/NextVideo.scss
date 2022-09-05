@@ -2,6 +2,7 @@
 @use "../../styles/partials/colours" as *;
 
 .nextvideo{
+
   &__container{
     display: flex;
     padding-bottom: 1rem;
@@ -10,8 +11,10 @@
     height: 3rem;
     width: 5rem;
     border-radius: 4px;
+    flex-shrink: 0;
   }
   &__heading-author{
+    margin-left: 1rem;
 
   }
   &__heading{

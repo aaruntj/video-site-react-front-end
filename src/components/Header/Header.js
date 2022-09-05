@@ -1,11 +1,14 @@
 import "./Header.scss"
 import headerLogo from "../../assets/logo/BrainFlix-logo.svg"
+import searchIcon from "../../assets/icons/search.svg"
 import uploadIcon from "../../assets/icons/upload.svg"
 
 import {Link} from "react-router-dom"
 
 
-function Header() {
+function Header(
+  // videoRefresh,setVideoRefresh
+  ) {
   return (
     <>
       <header className="header">
@@ -15,7 +18,10 @@ function Header() {
           </Link>
         </section>
         <section className="header__input">
-          <input type="text" className="header__search" placeholder="Search"/>
+          <section className="header__input-container">
+            <input type="text" className="header__search" placeholder="Search"/>
+            <img className="header__input-icon" src={searchIcon} />
+          </section>
           <img className="header__avatar" src={require("../../assets/images/Mohan-muruge.jpg")} alt="Avatar"/>
           <Link className="header__button" to="/upload">
             <button className="header__button">
