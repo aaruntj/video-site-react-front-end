@@ -6,20 +6,20 @@ import axios from "axios"
 function UploadVideo() {
   const navigate = useNavigate()
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
 
-    const formElement = event.target
-    const data = new FormData(formElement)
-    const title = data.get("title")
-    const description = data.get("description")
+    const title = event.target.title.value
+    const description = event.target.description.value
 
-    axios
-      .post("http://localhost:8080/videos", { title, description })
-      .then(response => {
-        alert("Successfully posted video")
-        navigate("/home")
-      })
+    try {
+      const response = await axios.post("http://localhost:8080/videos", { title, description })
+      // console.log(response)
+      alert("Successfully posted video")
+      navigate("/home")
+    } catch(error) {
+      console.log("error: ", error)
+    }
   }
 
   return (

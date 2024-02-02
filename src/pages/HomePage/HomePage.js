@@ -26,32 +26,35 @@ function HomePage() {
 
   // Fetch list of videos
   useEffect(() => {
-    axios
-      .get(videosUrl)
-      .then(response =>{
-        setVideos(response.data)
+    async function getVideoList() {
+      try {
+        const videosResponse = await axios.get(videosUrl)
+        setVideos(videosResponse.data)
         if (!videoId) {
-          const firstVideoId = response.data[0].id
-          axios
-            .get(videoDetailsUrl(firstVideoId))
-            .then(response =>{
-              setVideo(response.data)
-            })  
+          const firstVideoId = videosResponse.data[0].id
+          const firstVideoResponse = await axios.get(videoDetailsUrl(firstVideoId))
+          setVideo(firstVideoResponse.data)
         }
-      })   
+      } catch(error){
+        console.log("error: ",error)
+      }
+    }
+    getVideoList()
   }, [pageRefresh]);
 
   // Fetch individual video
   useEffect(() => {
     if (videoId) {
-      axios
-      .get(videoDetailsUrl(videoId))
-      .then(response =>{
-        setVideo(response.data)
-      })
-      .catch(error =>{
-        setvideoError(true)
-      })
+      async function getIndividualVideo(){
+        try {
+          const response = await axios.get(videoDetailsUrl(videoId))
+          setVideo(response.data)
+        } catch(error) {
+          console.log("error: ",error)
+          setvideoError(true)
+        }
+      }
+      getIndividualVideo()
     } else {
       setPageRefresh(!pageRefresh)
     }
