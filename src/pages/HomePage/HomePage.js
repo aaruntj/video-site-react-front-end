@@ -29,6 +29,7 @@ function HomePage() {
     async function getVideoList() {
       try {
         const videosResponse = await axios.get(videosUrl)
+        // console.log(videosResponse)
         setVideos(videosResponse.data)
         if (!videoId) {
           const firstVideoId = videosResponse.data[0].id
@@ -36,7 +37,7 @@ function HomePage() {
           setVideo(firstVideoResponse.data)
         }
       } catch(error){
-        console.log("error: ",error)
+        console.log("get video list error: ",error)
       }
     }
     getVideoList()
@@ -50,7 +51,7 @@ function HomePage() {
           const response = await axios.get(videoDetailsUrl(videoId))
           setVideo(response.data)
         } catch(error) {
-          console.log("error: ",error)
+          console.log("get individula video error: ",error)
           setvideoError(true)
         }
       }
